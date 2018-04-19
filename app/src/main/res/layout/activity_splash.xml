@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.international.shopping.view.activity.SplashActivity">
+
+    <ImageView
+        android:id="@+id/splashView_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash" />
+
+
+    <TextView
+        android:id="@+id/skip_tv"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/shape_round_bg"
+        android:text="5s跳过"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:textSize="12dp"
+        android:gravity="center"/>
+
+</RelativeLayout>

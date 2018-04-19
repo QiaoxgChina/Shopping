@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\ASWorkspace\Shopping\session\libs"><file name="java-json.jar" path="D:\ASWorkspace\Shopping\session\libs\java-json.jar"/><file name="nim-lucene-5.0.0.jar" path="D:\ASWorkspace\Shopping\session\libs\nim-lucene-5.0.0.jar"/></source></dataSet><dataSet config="release"><source path="D:\ASWorkspace\Shopping\session\src\release\jniLibs"/></dataSet></merger>

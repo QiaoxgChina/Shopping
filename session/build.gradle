@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "25.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        renderscriptSupportModeEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res', 'res-ptr2', 'res-chatroom']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    defaultConfig {
+        // dex突破65535的限制
+        multiDexEnabled true
+    }
+//
+//    compileOptions {
+//        sourceCompatibility rootProject.ext.appSourceCompatibility
+//        targetCompatibility rootProject.ext.appTargetCompatibility
+//    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+//    compile "com.android.support:appcompat-v7:${V7_APPCOMPAT_VERSION}"
+//    compile "com.android.support:support-v4:${V4_SUPPORT_VERSION}"
+//    compile "com.android.support:design:${DESIGIN_SUPPORT_VERSION}"
+//    compile "com.android.support.constraint:constraint-layout_custom_banner_view:${CONSTRAIT_SUPPORT_VERSION}"
+    compile 'me.everything:overscroll-decor-android:1.0.4'
+    compile 'me.leolin:ShortcutBadger:1.1.17@aar'
+    //    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    compile 'jp.wasabeef:glide-transformations:3.0.1'
+    //api 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1' // if you want to use the Glide GPU Filters
+    compile 'com.android.support:support-annotations:26.0.2'
+    compile project(':baselib')
+
+    compile 'com.alibaba:fastjson:1.1.34'
+}

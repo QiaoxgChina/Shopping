@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/main_layout"
+    tools:context=".view.MainActivity">
+
+    <com.international.baselib.base.BaseViewPager
+        android:id="@+id/main_viewPager"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/main_line"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <View
+        android:id="@+id/main_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/main_tabLayout"
+        android:background="@color/color_BFBFBF" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/main_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="54dp"
+        android:background="#fff"
+        app:tabIndicatorHeight="0dp" />
+</RelativeLayout>

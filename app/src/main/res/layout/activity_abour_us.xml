@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.international.shopping.view.activity.AboutUsActivity">
+
+    <RelativeLayout
+        android:id="@+id/titleBar_hidden"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:padding="3dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/mine_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/titleBar_height"
+            android:gravity="center"
+            android:text="关于"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+
+    </RelativeLayout>
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/aboutUs_bannerView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp" />-->
+
+</LinearLayout>
