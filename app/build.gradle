@@ -83,7 +83,7 @@ dependencies {
     //    compile project(':baselib')
     compile project(path: ':session')
     //    compile project(':thirdp')
-    compile project(':thirdp')
+    compile project(':third')
 //    compile 'com.android.support.constraint:constraint-layout_custom_banner_view:1.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 
-import com.example.thirdp.UMengLogin;
+import com.example.third.UMengLogin;
 import com.international.shopping.config.NIMInitManager;
 import com.international.shopping.util.SharedPreferencesUtil;
 import com.international.shopping.config.UserPreferences;

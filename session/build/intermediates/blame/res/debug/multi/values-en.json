@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\ASWorkspace\\Shopping\\session\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+        "outputFile": "F:\\Shopping\\session\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
         "map": [
             {
                 "to": {
@@ -11,13 +11,13 @@
                     "endOffset": 100
                 },
                 "from": {
-                    "file": "D:\\ASWorkspace\\Shopping\\session\\res\\values-en\\strings-ptr.xml",
+                    "file": "F:\\Shopping\\session\\res\\values-en\\strings-ptr.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 123,
+                        "startOffset": 120,
                         "endColumn": 49,
-                        "endOffset": 168
+                        "endOffset": 165
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 157
                 },
                 "from": {
-                    "file": "D:\\ASWorkspace\\Shopping\\session\\res\\values-en\\strings-ptr.xml",
+                    "file": "F:\\Shopping\\session\\res\\values-en\\strings-ptr.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 65,
+                        "startOffset": 63,
                         "endColumn": 56,
-                        "endOffset": 117
+                        "endOffset": 115
                     }
                 }
             },
@@ -49,13 +49,13 @@
                     "endOffset": 204
                 },
                 "from": {
-                    "file": "D:\\ASWorkspace\\Shopping\\session\\res\\values-en\\strings-ptr.xml",
+                    "file": "F:\\Shopping\\session\\res\\values-en\\strings-ptr.xml",
                     "position": {
                         "startLine": 1,
                         "startColumn": 4,
-                        "startOffset": 17,
+                        "startOffset": 16,
                         "endColumn": 46,
-                        "endOffset": 59
+                        "endOffset": 58
                     }
                 }
             }

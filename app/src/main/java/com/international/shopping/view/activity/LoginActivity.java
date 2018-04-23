@@ -3,28 +3,18 @@ package com.international.shopping.view.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.thirdp.UMengLogin;
 import com.international.shopping.base.BaseActivity;
-import com.international.shopping.model.User;
-import com.international.shopping.util.SharedPreferencesUtil;
 import com.international.shopping.R;
 import com.international.shopping.presenter.UserPresenter;
 import com.international.shopping.view.MainActivity;
 import com.international.shopping.view.iview.ILoginView;
-import com.netease.nim.uikit.net.DemoCache;
-import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-
-import java.util.Map;
 
 public class LoginActivity extends BaseActivity implements ILoginView {
 

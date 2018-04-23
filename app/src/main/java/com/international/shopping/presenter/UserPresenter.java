@@ -3,7 +3,7 @@ package com.international.shopping.presenter;
 import android.app.Activity;
 import android.util.Log;
 
-import com.example.thirdp.UMengLogin;
+import com.example.third.UMengLogin;
 import com.international.shopping.model.User;
 import com.international.shopping.util.SharedPreferencesUtil;
 import com.international.shopping.api.ITestApi;
@@ -11,7 +11,6 @@ import com.international.shopping.api.IUserApi;
 import com.international.shopping.api.impl.TestApiImpl;
 import com.international.shopping.api.impl.UserApiImpl;
 import com.international.shopping.model.GithubApi;
-import com.international.shopping.view.activity.LoginActivity;
 import com.international.shopping.view.iview.ILoginView;
 import com.netease.nim.uikit.net.DemoCache;
 import com.netease.nimlib.sdk.NIMClient;
@@ -23,14 +22,11 @@ import com.netease.nimlib.sdk.friend.model.Friend;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
-import java.io.BufferedReader;
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.umeng.socialize.bean.SHARE_MEDIA.*;
 
 public class UserPresenter {
 

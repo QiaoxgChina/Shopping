@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\ASWorkspace\\Shopping\\session\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-en\\values-en.xml",
+        "outputFile": "F:\\Shopping\\session\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-en\\values-en.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 100
                 },
                 "from": {
-                    "file": "D:\\ASWorkspace\\Shopping\\session\\build\\intermediates\\bundles\\debug\\res\\values-en\\values-en.xml",
+                    "file": "F:\\Shopping\\session\\build\\intermediates\\bundles\\debug\\res\\values-en\\values-en.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 157
                 },
                 "from": {
-                    "file": "D:\\ASWorkspace\\Shopping\\session\\build\\intermediates\\bundles\\debug\\res\\values-en\\values-en.xml",
+                    "file": "F:\\Shopping\\session\\build\\intermediates\\bundles\\debug\\res\\values-en\\values-en.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 204
                 },
                 "from": {
-                    "file": "D:\\ASWorkspace\\Shopping\\session\\build\\intermediates\\bundles\\debug\\res\\values-en\\values-en.xml",
+                    "file": "F:\\Shopping\\session\\build\\intermediates\\bundles\\debug\\res\\values-en\\values-en.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

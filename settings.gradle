@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':session',':thirdp'
+include ':app', ':baselib', ':session', ':third'
