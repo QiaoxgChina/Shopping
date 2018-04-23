@@ -7,11 +7,6 @@
     android:orientation="vertical"
     tools:context=".view.fragment.MineFragment">
 
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="20dp"-->
-        <!--android:background="@color/colorPrimary" />-->
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/titleBar_height"
@@ -21,14 +16,30 @@
         android:textColor="#fff"
         android:textSize="18dp" />
 
-    <!-- TODO: Update blank fragment layout_custom_banner_view -->
-    <TextView
-        android:id="@+id/tag_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment"
-        android:textSize="18dp" />
+        android:layout_marginTop="150dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购物车空空如也"
+            android:textSize="18dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_login_edittext_bg"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textSize="12dp"
+            android:textColor="@color/main_color"
+            android:text="去逛狂" />
+
+    </LinearLayout>
 
 </LinearLayout>

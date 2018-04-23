@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 
+import com.example.third.UMengHelper;
 import com.example.third.UMengLogin;
 import com.international.shopping.config.NIMInitManager;
 import com.international.shopping.util.SharedPreferencesUtil;
@@ -56,7 +57,7 @@ public class BaseApplication extends MultiDexApplication {
         }
 
         //友盟第三方
-        UMengLogin.getInstance().init(this);
+        UMengHelper.init(this);
     }
 
     private void initUIKit() {

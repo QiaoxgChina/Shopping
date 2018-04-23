@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.third.UMengShare;
 import com.international.baselib.dialog.ConfirmDialog;
 import com.international.baselib.dialog.callback.ConfirmCallback;
 import com.international.shopping.R;
@@ -15,6 +16,7 @@ import com.international.shopping.util.SharedPreferencesUtil;
 import com.netease.nim.uikit.net.DemoCache;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.auth.AuthService;
+import com.umeng.socialize.UMShareAPI;
 
 public class SettingActivity extends BaseActivity {
 
@@ -70,5 +72,18 @@ public class SettingActivity extends BaseActivity {
                 });
             }
         });
+
+        findViewById(R.id.share_rl).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UMengShare.showShareView(null, SettingActivity.this);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode,resultCode,data);
     }
 }

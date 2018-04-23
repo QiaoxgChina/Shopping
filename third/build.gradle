@@ -15,13 +15,13 @@ android {
     }
     buildTypes {
         release {
-            manifestPlaceholders = [qqappid: "你的qq appid"]
+            manifestPlaceholders = [qqappid: "1106084810"]
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         debug {
-            manifestPlaceholders = [qqappid: "你的qq appid"]
+            manifestPlaceholders = [qqappid: "1106084810"]
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

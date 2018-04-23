@@ -54,8 +54,6 @@ public class CarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_car, container, false);
-        TextView tagTv = view.findViewById(R.id.tag_fragment);
-        tagTv.setText(mParam1);
         return view;
     }
 

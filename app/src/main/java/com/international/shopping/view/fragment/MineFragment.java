@@ -121,7 +121,7 @@ public class MineFragment extends Fragment {
                 }
 //                P2PMessageActivity.start(getActivity(), account, null, null);
 //"ai-assistant"
-                SessionHelper.startP2PSession(getActivity(), "ai-assistant");
+                SessionHelper.startP2PSession(getActivity(), account);
             }
         });
 
