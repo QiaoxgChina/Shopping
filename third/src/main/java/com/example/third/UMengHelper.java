@@ -23,6 +23,8 @@ public class UMengHelper {
         PlatformConfig.setQQZone("1106844708", "hkAFoKXGa8vG7ST9");
 
         PlatformConfig.setWeixin("wx414ed93bf88dfcb5", "01eef456d7b83edafa325f3c4d00c32a");
+
+
     }
 
 }
