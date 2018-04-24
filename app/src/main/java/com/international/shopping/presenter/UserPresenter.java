@@ -12,6 +12,7 @@ import com.international.shopping.api.impl.TestApiImpl;
 import com.international.shopping.api.impl.UserApiImpl;
 import com.international.shopping.model.GithubApi;
 import com.international.shopping.view.iview.ILoginView;
+import com.netease.nim.uikit.NimHelper;
 import com.netease.nim.uikit.net.DemoCache;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
@@ -61,7 +62,7 @@ public class UserPresenter {
                         }
 
                         iLoginView.loginOk();
-                        DemoCache.setAccount(account);
+                        NimHelper.getInstance().setAccount(account);
                         saveLoginInfo(account, token);
                     }
 
@@ -127,8 +128,8 @@ public class UserPresenter {
     }
 
     private void saveLoginInfo(final String account, final String token) {
-        SharedPreferencesUtil.saveUserAccount(account);
-        SharedPreferencesUtil.saveUserToken(token);
+        NimHelper.getInstance().setAccount(account);
+        NimHelper.getInstance().setToken(token);
     }
 
     public void userRegister(String username, String password) {

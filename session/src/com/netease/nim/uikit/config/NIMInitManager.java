@@ -1,4 +1,4 @@
-package com.international.shopping.config;
+package com.netease.nim.uikit.config;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.widget.Toast;
 
-import com.international.shopping.R;
+import com.netease.nim.uikit.R;
 import com.netease.nim.uikit.net.DemoCache;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.NimStrings;

@@ -13,6 +13,8 @@ import com.international.shopping.R;
 import com.international.shopping.base.BaseActivity;
 import com.international.shopping.util.SharedPreferencesUtil;
 import com.international.shopping.view.MainActivity;
+import com.netease.nim.uikit.NimHelper;
+import com.netease.nim.uikit.net.DemoCache;
 
 public class SplashActivity extends BaseActivity {
 
@@ -37,7 +39,7 @@ public class SplashActivity extends BaseActivity {
                     }
                     break;
                 case MSG_TO_SKIP:
-                    if (!TextUtils.isEmpty(SharedPreferencesUtil.getUserAccount()) && !TextUtils.isEmpty(SharedPreferencesUtil.getUserToken())) {
+                    if (!TextUtils.isEmpty(NimHelper.getInstance().getAccount()) && !TextUtils.isEmpty(NimHelper.getInstance().getToken())) {
                         skipPlace(MainActivity.class);
                     } else {
                         skipPlace(LoginActivity.class);

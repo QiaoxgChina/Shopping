@@ -24,6 +24,8 @@ public class UMengHelper {
 
         PlatformConfig.setWeixin("wx414ed93bf88dfcb5", "01eef456d7b83edafa325f3c4d00c32a");
 
+        PlatformConfig.setSinaWeibo("2523723774","808a9f89f35bdfe4a87d4f43167e66a1","");
+
 
     }
 

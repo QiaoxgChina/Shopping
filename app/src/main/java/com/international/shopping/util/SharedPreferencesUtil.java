@@ -16,24 +16,6 @@ import com.international.shopping.model.User;
 public class SharedPreferencesUtil {
 
     private static final String KEY_USER = "user";
-    private static final String KEY_USER_ACCOUNT = "account";
-    private static final String KEY_USER_TOKEN = "token";
-
-    public static void saveUserAccount(String account) {
-        saveString(KEY_USER_ACCOUNT, account);
-    }
-
-    public static String getUserAccount() {
-        return getString(KEY_USER_ACCOUNT);
-    }
-
-    public static void saveUserToken(String token) {
-        saveString(KEY_USER_TOKEN, token);
-    }
-
-    public static String getUserToken() {
-        return getString(KEY_USER_TOKEN);
-    }
 
     public static User getUser(){
         String userStr = getString(KEY_USER);

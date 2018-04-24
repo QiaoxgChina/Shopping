@@ -17,6 +17,8 @@ import com.international.shopping.model.User;
 import com.international.shopping.util.SharedPreferencesUtil;
 import com.international.shopping.view.activity.AboutUsActivity;
 import com.international.shopping.view.activity.SettingActivity;
+import com.netease.nim.uikit.NimHelper;
+import com.netease.nim.uikit.net.DemoCache;
 import com.netease.nim.uikit.session.SessionHelper;
 
 public class MineFragment extends Fragment {
@@ -89,7 +91,10 @@ public class MineFragment extends Fragment {
         iconIv = view.findViewById(R.id.mine_header_iv);
         if (mUser != null) {
             nameTv.setText(mUser.getName());
-            Glide.with(this).asBitmap().load(mUser.getIconUrl()).into(iconIv).onLoadStarted(getActivity().getResources().getDrawable(R.drawable.mine_default_header));
+            Glide.with(this).asBitmap()
+                    .load(mUser.getIconUrl())
+                    .into(iconIv)
+                    .onLoadStarted(getActivity().getResources().getDrawable(R.drawable.mine_default_header));
         }
 //        hiddenTitleBar = view.findViewById(R.id.titleBar_hidden);
         contentScrollView = view.findViewById(R.id.content_scrollView);
@@ -116,7 +121,7 @@ public class MineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String account = "qiaoxg";
-                if (SharedPreferencesUtil.getUserAccount().equals("qiaoxg")) {
+                if (NimHelper.getInstance().getAccount().equals("qiaoxg")) {
                     account = "123456";
                 }
 //                P2PMessageActivity.start(getActivity(), account, null, null);

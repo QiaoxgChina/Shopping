@@ -1,4 +1,4 @@
-package com.international.shopping.config;
+package com.netease.nim.uikit.config;
 
 import com.netease.nimlib.sdk.ServerAddresses;
 

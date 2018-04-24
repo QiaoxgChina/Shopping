@@ -16,10 +16,21 @@ public class DemoCache {
 
     private static String account;
 
+    private static String token;
+
     private static StatusBarNotificationConfig notificationConfig;
 
     public static void clear() {
         account = null;
+        token = null;
+    }
+
+    public static String getToken(){
+        return token;
+    }
+
+    public static void setToken(String token){
+        DemoCache.token = token;
     }
 
     public static String getAccount() {

@@ -31,6 +31,12 @@ android {
         // dex突破65535的限制
         multiDexEnabled true
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
 }
 
 dependencies {

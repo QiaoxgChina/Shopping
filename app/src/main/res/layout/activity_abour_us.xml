@@ -34,9 +34,14 @@
 
     </RelativeLayout>
 
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/aboutUs_bannerView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp" />-->
+
+    <TextView
+        android:id="@+id/version_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="1.0.5" />
 
 </LinearLayout>
