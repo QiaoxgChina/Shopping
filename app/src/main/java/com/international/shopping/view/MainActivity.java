@@ -17,6 +17,7 @@ import com.international.baselib.dialog.ConfirmDialog;
 import com.international.baselib.view.BaseViewPagerAdapter;
 import com.international.shopping.R;
 import com.international.shopping.base.BaseActivity;
+import com.international.shopping.event.SwitchMainTabEvent;
 import com.international.shopping.view.fragment.CarFragment;
 import com.international.shopping.view.fragment.DiscoverFragment;
 import com.international.shopping.view.fragment.HomeFragment;
@@ -26,6 +27,10 @@ import com.netease.nim.uikit.support.permission.MPermission;
 import com.netease.nim.uikit.support.permission.annotation.OnMPermissionDenied;
 import com.netease.nim.uikit.support.permission.annotation.OnMPermissionGranted;
 import com.netease.nim.uikit.support.permission.annotation.OnMPermissionNeverAskAgain;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -45,6 +50,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        EventBus.getDefault().register(this);
+
 //        View mainView = findViewById(R.id.main_layout);
 //        mainView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         initData();
@@ -167,6 +175,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        //注销EventBus
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -175,6 +186,18 @@ public class MainActivity extends BaseActivity {
             ConfirmDialog.ExitApp(MainActivity.this);
         }
         return true;
+    }
+
+    /**
+     * 处理EventBus事件
+     *
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSwitchMainTabEvent(SwitchMainTabEvent event) {
+        if (event != null) {
+            mViewPager.setCurrentItem(event.getTargetFragment());
+        }
     }
 
 }

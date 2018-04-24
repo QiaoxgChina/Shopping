@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.international.shopping.R;
+import com.international.shopping.event.SwitchMainTabEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class CarFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -54,6 +57,14 @@ public class CarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_car, container, false);
+
+        view.findViewById(R.id.toBuy_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new SwitchMainTabEvent(3,0));
+            }
+        });
+
         return view;
     }
 
