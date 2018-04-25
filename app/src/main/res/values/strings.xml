@@ -9,4 +9,6 @@
     <string name="splash_time">%ss跳过</string>
 
     <string name="about_version">v%s</string>
+
+    <string name="car_total_money">合计:%s</string>
 </resources>

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,13 @@ import android.widget.Toast;
 import com.international.baselib.view.SwipeRefreshView;
 import com.international.shopping.R;
 import com.international.shopping.event.SwitchMainTabEvent;
+import com.international.shopping.model.CarItem;
+import com.international.shopping.view.adapter.CarAdapter;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarFragment extends Fragment {
 
@@ -24,16 +30,16 @@ public class CarFragment extends Fragment {
     private static final int MSG_LOAD_RECYCLE = 2;
 
 
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case MSG_REFRESH_RECYCLE:
-                    Toast.makeText(getActivity(),"更新成功",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "更新成功", Toast.LENGTH_SHORT).show();
                     mSwipeView.setRefreshing(false);
                     break;
                 case MSG_LOAD_RECYCLE:
-                    Toast.makeText(getActivity(),"加载成功",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "加载成功", Toast.LENGTH_SHORT).show();
                     mSwipeView.setLoading(false);
                     break;
             }
@@ -74,6 +80,11 @@ public class CarFragment extends Fragment {
     private View mNoDataView;
     private SwipeRefreshView mSwipeView;
     private RecyclerView mRecycleView;
+    private CarAdapter mAdapter;
+    private List<CarItem> carItemList = new ArrayList<>();
+    private TextView mTotalMoneyTv;
+    private View mCheckBox;
+    private boolean isSelectedAll = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,10 +103,11 @@ public class CarFragment extends Fragment {
         view.findViewById(R.id.toBuy_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().post(new SwitchMainTabEvent(2,0));
+                EventBus.getDefault().post(new SwitchMainTabEvent(2, 0));
             }
         });
 
+        mTotalMoneyTv = view.findViewById(R.id.totalMoney_tv);
         mNoDataView = view.findViewById(R.id.noData_view);
         mNoDataView.setVisibility(View.GONE);
 
@@ -103,18 +115,45 @@ public class CarFragment extends Fragment {
         mSwipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mHandler.sendEmptyMessageDelayed(MSG_REFRESH_RECYCLE,1000);
+                mHandler.sendEmptyMessageDelayed(MSG_REFRESH_RECYCLE, 1000);
             }
         });
 
         mSwipeView.setOnLoadMoreListener(new SwipeRefreshView.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                mHandler.sendEmptyMessageDelayed(MSG_LOAD_RECYCLE,1000);
+                mHandler.sendEmptyMessageDelayed(MSG_LOAD_RECYCLE, 1000);
+            }
+        });
+
+        CarItem item = new CarItem();
+        item.setCount(2);
+        item.setImgUrl("https://img10.360buyimg.com/n1/s180x180_jfs/t15082/163/1102057221/274351/c3fbc184/5a449dd7Ne415a02c.jpg");
+        item.setMoney(125);
+        item.setTitle("联想电脑Y5300");
+        item.setSelected(false);
+        carItemList.add(item);
+
+        mAdapter = new CarAdapter(carItemList, getActivity(), new CarAdapter.OnUpdateTotalMoneyListener() {
+            @Override
+            public void totalMoneyChanged(String totalMoney) {
+                mTotalMoneyTv.setText(String.format(getString(R.string.car_total_money), totalMoney));
             }
         });
 
         mRecycleView = view.findViewById(R.id.recycler_view);
+        mRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecycleView.setAdapter(mAdapter);
+        mTotalMoneyTv.setText(String.format(getString(R.string.car_total_money), mAdapter.getTotalMoney(carItemList)));
+
+        mCheckBox = view.findViewById(R.id.selectedAll_check);
+        mCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter.selectedAll(!isSelectedAll);
+                isSelectedAll = !isSelectedAll;
+            }
+        });
         return view;
     }
 
