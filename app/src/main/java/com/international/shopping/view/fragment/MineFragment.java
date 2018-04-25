@@ -31,7 +31,6 @@ public class MineFragment extends Fragment {
     private static final String TAG = "MineFragment";
 
     private static final int MSG_UPDATE_INFO = 1;
-    private static final int MSG_LOAD_RECYCLE = 2;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -39,10 +38,6 @@ public class MineFragment extends Fragment {
             switch (msg.what) {
                 case MSG_UPDATE_INFO:
                     mSwipeView.setRefreshing(false);
-                    break;
-                case MSG_LOAD_RECYCLE:
-                    Toast.makeText(getActivity(),"加载成功",Toast.LENGTH_SHORT).show();
-                    mSwipeView.setLoading(false);
                     break;
             }
         }
@@ -119,12 +114,6 @@ public class MineFragment extends Fragment {
             @Override
             public void onRefresh() {
                 mHandler.sendEmptyMessageDelayed(MSG_UPDATE_INFO, 1000);
-            }
-        });
-        mSwipeView.setOnLoadMoreListener(new SwipeRefreshView.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                mHandler.sendEmptyMessageDelayed(MSG_LOAD_RECYCLE, 1000);
             }
         });
 
