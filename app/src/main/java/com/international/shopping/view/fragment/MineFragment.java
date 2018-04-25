@@ -2,7 +2,10 @@ package com.international.shopping.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.international.baselib.view.SwipeRefreshView;
 import com.international.shopping.R;
 import com.international.shopping.model.User;
 import com.international.shopping.util.SharedPreferencesUtil;
@@ -24,6 +29,24 @@ import com.netease.nim.uikit.session.SessionHelper;
 public class MineFragment extends Fragment {
 
     private static final String TAG = "MineFragment";
+
+    private static final int MSG_UPDATE_INFO = 1;
+    private static final int MSG_LOAD_RECYCLE = 2;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_UPDATE_INFO:
+                    mSwipeView.setRefreshing(false);
+                    break;
+                case MSG_LOAD_RECYCLE:
+                    Toast.makeText(getActivity(),"加载成功",Toast.LENGTH_SHORT).show();
+                    mSwipeView.setLoading(false);
+                    break;
+            }
+        }
+    };
 
     //    private View hiddenTitleBar;
     private ScrollView contentScrollView;
@@ -78,6 +101,8 @@ public class MineFragment extends Fragment {
         mUser = SharedPreferencesUtil.getUser();
     }
 
+    private SwipeRefreshView mSwipeView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,6 +112,22 @@ public class MineFragment extends Fragment {
     }
 
     private void initView(View view) {
+
+        mSwipeView = view.findViewById(R.id.mine_swipe);
+        mSwipeView.setColorSchemeResources(R.color.main_color);
+        mSwipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mHandler.sendEmptyMessageDelayed(MSG_UPDATE_INFO, 1000);
+            }
+        });
+        mSwipeView.setOnLoadMoreListener(new SwipeRefreshView.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                mHandler.sendEmptyMessageDelayed(MSG_LOAD_RECYCLE, 1000);
+            }
+        });
+
         nameTv = view.findViewById(R.id.name_tv);
         iconIv = view.findViewById(R.id.mine_header_iv);
         if (mUser != null) {

@@ -1,18 +1,45 @@
 package com.international.shopping.view.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.international.baselib.view.SwipeRefreshView;
 import com.international.shopping.R;
 import com.international.shopping.event.SwitchMainTabEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
 public class CarFragment extends Fragment {
+
+    private static final int MSG_REFRESH_RECYCLE = 1;
+    private static final int MSG_LOAD_RECYCLE = 2;
+
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case MSG_REFRESH_RECYCLE:
+                    Toast.makeText(getActivity(),"更新成功",Toast.LENGTH_SHORT).show();
+                    mSwipeView.setRefreshing(false);
+                    break;
+                case MSG_LOAD_RECYCLE:
+                    Toast.makeText(getActivity(),"加载成功",Toast.LENGTH_SHORT).show();
+                    mSwipeView.setLoading(false);
+                    break;
+            }
+        }
+    };
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,6 +71,10 @@ public class CarFragment extends Fragment {
         return fragment;
     }
 
+    private View mNoDataView;
+    private SwipeRefreshView mSwipeView;
+    private RecyclerView mRecycleView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +92,29 @@ public class CarFragment extends Fragment {
         view.findViewById(R.id.toBuy_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().post(new SwitchMainTabEvent(3,0));
+                EventBus.getDefault().post(new SwitchMainTabEvent(2,0));
             }
         });
 
+        mNoDataView = view.findViewById(R.id.noData_view);
+        mNoDataView.setVisibility(View.GONE);
+
+        mSwipeView = view.findViewById(R.id.swipe_refresh);
+        mSwipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mHandler.sendEmptyMessageDelayed(MSG_REFRESH_RECYCLE,1000);
+            }
+        });
+
+        mSwipeView.setOnLoadMoreListener(new SwipeRefreshView.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                mHandler.sendEmptyMessageDelayed(MSG_LOAD_RECYCLE,1000);
+            }
+        });
+
+        mRecycleView = view.findViewById(R.id.recycler_view);
         return view;
     }
 

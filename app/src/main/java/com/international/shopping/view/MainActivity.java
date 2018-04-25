@@ -112,13 +112,13 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initData() {
-        TAB_TITLES = new String[]{"主页", "发现", "消息", "购物车", "我的"};
+        TAB_TITLES = new String[]{"主页", "发现", "购物车", "我的"};
 
         mFragmentList.add(HomeFragment.newInstance(TAB_TITLES[0], ""));
         mFragmentList.add(DiscoverFragment.newInstance(TAB_TITLES[1], ""));
-        mFragmentList.add(MessageFragment.newInstance(TAB_TITLES[2], ""));
-        mFragmentList.add(CarFragment.newInstance(TAB_TITLES[3], ""));
-        mFragmentList.add(MineFragment.newInstance(TAB_TITLES[4], ""));
+//        mFragmentList.add(MessageFragment.newInstance(TAB_TITLES[2], ""));
+        mFragmentList.add(CarFragment.newInstance(TAB_TITLES[2], ""));
+        mFragmentList.add(MineFragment.newInstance(TAB_TITLES[3], ""));
 
         TAB_IMGS = new int[]{R.drawable.selector_tab_img_main,
                 R.drawable.selector_tab_img_discover,

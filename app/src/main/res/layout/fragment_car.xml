@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_F6F6F6"
-    android:orientation="vertical"
     tools:context=".view.fragment.MineFragment">
 
     <TextView
+        android:id="@+id/title_tv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titleBar_height"
         android:background="@color/colorPrimary"
@@ -16,10 +16,27 @@
         android:textColor="#fff"
         android:textSize="18dp" />
 
+
+    <com.international.baselib.view.SwipeRefreshView
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_tv">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.international.baselib.view.SwipeRefreshView>
+
     <LinearLayout
+        android:id="@+id/noData_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/title_tv"
         android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:layout_marginTop="150dp"
         android:orientation="vertical">
 
@@ -33,14 +50,14 @@
             android:id="@+id/toBuy_btn"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:background="@drawable/shape_login_edittext_bg"
-            android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:textSize="12dp"
+            android:background="@drawable/shape_login_edittext_bg"
+            android:gravity="center"
+            android:text="去逛狂"
             android:textColor="@color/main_color"
-            android:text="去逛狂" />
+            android:textSize="12dp" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
