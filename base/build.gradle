@@ -37,17 +37,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'org.greenrobot:eventbus:3.0.0'
-    //    compile 'com.android.support:multidex:1.0.3'
-    //    compile 'com.github.bumptech.glide:glide:3.7.0'
     // 添加依赖。注意，版本号必须一致。
     // 基础功能 (必需)
     // 音视频和互动白板服务需要
     // 音视频需要
     // 聊天室需要
-    //    compile 'com.commit451:PhotoView:1.2.4'
+        compile 'com.commit451:PhotoView:1.2.4'
 
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'

@@ -48,6 +48,6 @@ dependencies {
     compile 'com.umeng.sdk:share-qq:latest.integration'
     compile 'com.umeng.sdk:share-wechat:latest.integration'
     compile 'com.umeng.sdk:share-sina:latest.integration'
-    compile project(':baselib')
+    compile project(':base')
     compile files('libs/umeng-share-QQ-simplify-6.9.0.jar')
 }
