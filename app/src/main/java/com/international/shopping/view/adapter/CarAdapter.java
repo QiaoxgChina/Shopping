@@ -131,7 +131,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarItemViewHolde
     }
 
     public void selectedAll(boolean isSelectedAll) {
-        Log.e(TAG, "selectedAll: isSelectedAll is " + (isSelectedAll ? "true" : "false"));
         for (CarItem item : mCarItemList) {
             item.setSelected(isSelectedAll);
         }

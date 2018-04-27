@@ -93,6 +93,8 @@ public class CarFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        initData();
     }
 
     @Override
@@ -126,13 +128,7 @@ public class CarFragment extends Fragment {
             }
         });
 
-        CarItem item = new CarItem();
-        item.setCount(2);
-        item.setImgUrl("https://img10.360buyimg.com/n1/s180x180_jfs/t15082/163/1102057221/274351/c3fbc184/5a449dd7Ne415a02c.jpg");
-        item.setMoney(125);
-        item.setTitle("联想电脑Y5300");
-        item.setSelected(false);
-        carItemList.add(item);
+
 
         mAdapter = new CarAdapter(carItemList, getActivity(), new CarAdapter.OnUpdateTotalMoneyListener() {
             @Override
@@ -155,6 +151,26 @@ public class CarFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void initData(){
+        carItemList = new ArrayList<>();
+
+        CarItem item = new CarItem();
+        item.setCount(2);
+        item.setImgUrl("https://img10.360buyimg.com/n1/s180x180_jfs/t15082/163/1102057221/274351/c3fbc184/5a449dd7Ne415a02c.jpg");
+        item.setMoney(125);
+        item.setTitle("联想电脑Y5300");
+        item.setSelected(false);
+        carItemList.add(item);
+
+        CarItem item2 = new CarItem();
+        item2.setCount(1);
+        item2.setImgUrl("https://img14.360buyimg.com/n1/jfs/t6049/208/2003677230/203727/54271ae0/593959fbNa76b2674.jpg");
+        item2.setMoney(13488);
+        item2.setTitle("MacBook Pro");
+        item2.setSelected(false);
+        carItemList.add(item2);
     }
 
 

@@ -43,9 +43,9 @@ dependencies {
     // 音视频和互动白板服务需要
     // 音视频需要
     // 聊天室需要
-        compile 'com.commit451:PhotoView:1.2.4'
+//        compile 'com.commit451:PhotoView:1.2.4'
 
-    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:multidex:1.0.2'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
@@ -62,4 +62,5 @@ dependencies {
     compile 'com.netease.nimlib:chatroom:5.0.0'
     compile 'com.github.bumptech.glide:glide:4.2.0'
     testCompile 'junit:junit:4.12'
+
 }

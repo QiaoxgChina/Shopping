@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context=".view.fragment.MineFragment">
 
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="20dp"-->
-        <!--android:background="@color/colorPrimary" />-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/colorPrimary" />
 
     <TextView
         android:layout_width="match_parent"

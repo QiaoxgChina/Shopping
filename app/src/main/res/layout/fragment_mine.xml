@@ -6,10 +6,17 @@
     android:background="@color/white"
     tools:context=".view.fragment.MineFragment">
 
+    <View
+        android:id="@+id/titleBar_view"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="20dp"/>
+
     <RelativeLayout
         android:id="@+id/titleBar_hidden"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:layout_below="@+id/titleBar_view"
         android:background="@color/colorPrimary">
 
         <ImageView

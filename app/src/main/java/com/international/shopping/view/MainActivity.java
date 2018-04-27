@@ -53,8 +53,8 @@ public class MainActivity extends BaseActivity {
 
         EventBus.getDefault().register(this);
 
-//        View mainView = findViewById(R.id.main_layout);
-//        mainView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        View mainView = findViewById(R.id.main_layout);
+        mainView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         initData();
         initView();
 

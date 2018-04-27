@@ -6,6 +6,12 @@
     android:background="@color/color_F6F6F6"
     tools:context=".view.fragment.MineFragment">
 
+    <View
+        android:id="@+id/titleBar_view"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="20dp"/>
+
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="match_parent"
@@ -13,6 +19,7 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="购物车"
+        android:layout_below="@+id/titleBar_view"
         android:textColor="#fff"
         android:textSize="18dp" />
 

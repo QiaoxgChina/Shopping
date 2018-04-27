@@ -62,7 +62,6 @@ public class UserPresenter {
                         }
 
                         iLoginView.loginOk();
-                        NimHelper.getInstance().setAccount(account);
                         saveLoginInfo(account, token);
                     }
 

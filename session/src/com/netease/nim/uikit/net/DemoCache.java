@@ -1,6 +1,8 @@
 package com.netease.nim.uikit.net;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 //import com.netease.nim.avchatkit.AVChatKit;
 //import com.netease.nim.rtskit.RTSKit;
@@ -11,6 +13,9 @@ import com.netease.nimlib.sdk.StatusBarNotificationConfig;
  * Created by jezhee on 2/20/15.
  */
 public class DemoCache {
+
+    private static final String KEY_ACCOUNT = "KEY_ACCOUNT";
+    private static final String KEY_TOKEN = "KEY_TOKEN";
 
     private static Context context;
 
@@ -25,15 +30,25 @@ public class DemoCache {
         token = null;
     }
 
-    public static String getToken(){
+    public static String getToken() {
+        if(TextUtils.isEmpty(token)){
+            DemoCache.token = getString(KEY_TOKEN);
+        }
+
         return token;
     }
 
-    public static void setToken(String token){
+    public static void setToken(String token) {
         DemoCache.token = token;
+
+        saveString(KEY_TOKEN, token);
     }
 
     public static String getAccount() {
+        if(TextUtils.isEmpty(account)){
+            DemoCache.account = getString(KEY_ACCOUNT);
+        }
+
         return account;
     }
 
@@ -44,6 +59,21 @@ public class DemoCache {
         NimUIKit.setAccount(account);
 //        AVChatKit.setAccount(account);
 //        RTSKit.setAccount(account);
+        saveString(KEY_ACCOUNT, account);
+    }
+
+    private static void saveString(String key, String value) {
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    private static String getString(String key) {
+        return getSharedPreferences().getString(key, null);
+    }
+
+    static SharedPreferences getSharedPreferences() {
+        return context.getSharedPreferences("Shopping", Context.MODE_PRIVATE);
     }
 
     public static void setNotificationConfig(StatusBarNotificationConfig notificationConfig) {
