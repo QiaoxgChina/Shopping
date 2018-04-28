@@ -122,7 +122,6 @@ public class MainActivity extends BaseActivity {
 
         TAB_IMGS = new int[]{R.drawable.selector_tab_img_main,
                 R.drawable.selector_tab_img_discover,
-                R.drawable.selector_tab_img_message,
                 R.drawable.selector_tab_img_car,
                 R.drawable.selector_tab_img_mine};
     }

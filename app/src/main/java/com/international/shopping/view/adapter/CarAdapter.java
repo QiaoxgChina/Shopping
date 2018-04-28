@@ -53,7 +53,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarItemViewHolde
 
             holder.countTv.setText(item.getCount() + "");
 
-            holder.moneyTv.setText(item.getMoney() + "");
+            holder.moneyTv.setText(String.format(mContext.getResources().getString(R.string.car_total_money), item.getMoney() + ""));
 
             holder.addTv.setOnClickListener(new View.OnClickListener() {
                 @Override

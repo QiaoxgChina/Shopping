@@ -10,5 +10,7 @@
 
     <string name="about_version">v%s</string>
 
-    <string name="car_total_money">合计:%s</string>
+    <string name="car_total_money">合计:￥%s</string>
+
+    <string name="label_money">￥%s</string>
 </resources>

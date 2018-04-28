@@ -2,18 +2,18 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "27.0.3"
 
 
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
+//    defaultConfig {
+//        minSdkVersion 19
+//        targetSdkVersion 27
+//        versionCode 1
+//        versionName "1.0"
+//
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//
+//    }
 
 
     defaultConfig {
@@ -36,8 +36,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'org.greenrobot:eventbus:3.0.0'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'org.greenrobot:eventbus:3.0.0'
     // 添加依赖。注意，版本号必须一致。
     // 基础功能 (必需)
     // 音视频和互动白板服务需要
@@ -45,22 +45,22 @@ dependencies {
     // 聊天室需要
 //        compile 'com.commit451:PhotoView:1.2.4'
 
-    compile 'com.android.support:multidex:1.0.2'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.google.code.gson:gson:2.6.2'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.9'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
-    compile 'com.netease.nimlib:basesdk:5.0.0'
-    compile 'com.netease.nimlib:nrtc:5.0.0'
-    compile 'com.netease.nimlib:avchat:5.0.0'
-    compile 'com.netease.nimlib:chatroom:5.0.0'
-    compile 'com.github.bumptech.glide:glide:4.2.0'
-    testCompile 'junit:junit:4.12'
+    api 'com.android.support:multidex:1.0.2'
+    api 'com.android.support:appcompat-v7:27.1.1'
+    api 'com.android.support:design:27.1.1'
+    api 'com.android.support:support-v4:27.1.1'
+    api 'com.squareup.retrofit2:retrofit:2.1.0'
+    api 'com.google.code.gson:gson:2.6.2'
+    api 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
+    api 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    api 'io.reactivex:rxandroid:1.2.1'
+    api 'io.reactivex:rxjava:1.1.9'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    api 'com.netease.nimlib:basesdk:5.0.0'
+    api 'com.netease.nimlib:nrtc:5.0.0'
+    api 'com.netease.nimlib:avchat:5.0.0'
+    api 'com.netease.nimlib:chatroom:5.0.0'
+    api 'com.github.bumptech.glide:glide:4.2.0'
+    testImplementation 'junit:junit:4.12'
 
 }

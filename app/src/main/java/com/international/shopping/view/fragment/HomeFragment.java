@@ -10,8 +10,10 @@ import android.provider.FontRequest;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +24,10 @@ import com.bumptech.glide.Glide;
 import com.international.baselib.util.ToastUtil;
 import com.international.shopping.R;
 import com.international.shopping.model.CarItem;
+import com.international.shopping.model.HomeItem;
 import com.international.shopping.view.activity.SearchActivity;
 import com.international.shopping.view.adapter.CarAdapter;
+import com.international.shopping.view.adapter.HomeAdapter;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
@@ -88,14 +92,17 @@ public class HomeFragment extends Fragment {
         }
 
         initBannerData();
+
+        initItemData();
     }
 
     private Banner mBanner;
     private RecyclerView mRecyclerView;
-    private CarAdapter mAdapter;
+    private HomeAdapter mAdapter;
     private SwipeRefreshLayout mSwipeView;
     private View mSearchView;
     private float mAlph = 0.0f;
+    private List<HomeItem> items = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -157,30 +164,33 @@ public class HomeFragment extends Fragment {
         mBanner.start();
     }
 
-    private void initRecyclerView(View view) {
-        List<CarItem> items = new ArrayList<>();
-
+    private void initItemData(){
         for (int i = 0; i < 15; i++) {
-            CarItem item = new CarItem();
-            item.setCount(2);
-            item.setImgUrl("https://img10.360buyimg.com/n1/s180x180_jfs/t15082/163/1102057221/274351/c3fbc184/5a449dd7Ne415a02c.jpg");
-            item.setMoney(125);
-            item.setTitle("联想电脑Y5300");
-            item.setSelected(false);
+            HomeItem item = new HomeItem();
+            item.setMoney(125 + 125 * i);
+            if (i % 3 == 0) {
+                item.setImgUrl("http://img5.imgtn.bdimg.com/it/u=3422429041,2382682538&fm=27&gp=0.jpg");
+                item.setTitle("联想电脑Y5300");
+
+            } else if (i % 3 == 1) {
+                item.setImgUrl("http://img2.imgtn.bdimg.com/it/u=2152652095,3426448541&fm=27&gp=0.jpg");
+                item.setTitle("康佳（KONKA）A49U 49英寸64位10核4KHDR超高清安卓智能平板液晶电视");
+
+            } else {
+                item.setImgUrl("http://img5.imgtn.bdimg.com/it/u=2912000328,3978772011&fm=27&gp=0.jpg");
+                item.setTitle("雷士（NVC）插电五孔插座光控夜灯 浪漫温馨家居卧室过道走廊LED节能小夜灯 EJBX9001");
+            }
+
             items.add(item);
         }
+    }
 
-        mAdapter = new CarAdapter(items, getActivity(), new CarAdapter.OnUpdateTotalMoneyListener() {
-            @Override
-            public void totalMoneyChanged(String totalMoney) {
-
-            }
-        });
+    private void initRecyclerView(View view) {
+        mAdapter = new HomeAdapter(items, getActivity());
         mRecyclerView = view.findViewById(R.id.home_recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     private void initBanner(View view) {

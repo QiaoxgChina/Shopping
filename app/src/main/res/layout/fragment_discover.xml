@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_F6F6F6"
-    android:orientation="vertical"
-    tools:context=".view.fragment.MineFragment">
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
@@ -21,14 +20,16 @@
         android:textColor="#fff"
         android:textSize="18dp" />
 
-    <!-- TODO: Update blank fragment layout_custom_banner_view -->
-    <TextView
-        android:id="@+id/tag_fragment"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/discover_tabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:background="#fff"
+        app:tabIndicatorHeight="0.5dp" />
+
+    <com.international.baselib.base.BaseViewPager
+        android:id="@+id/discover_viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment"
-        android:textSize="18dp" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
