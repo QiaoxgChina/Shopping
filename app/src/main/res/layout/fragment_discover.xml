@@ -25,6 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:background="#fff"
+        app:tabMode="scrollable"
+        app:tabPadding="0dp"
+        app:tabGravity="center"
         app:tabIndicatorHeight="0.5dp" />
 
     <com.international.baselib.base.BaseViewPager

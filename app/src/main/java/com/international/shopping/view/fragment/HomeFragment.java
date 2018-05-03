@@ -2,6 +2,7 @@ package com.international.shopping.view.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.zxing.activity.CaptureActivity;
 import com.international.baselib.util.ToastUtil;
 import com.international.shopping.R;
 import com.international.shopping.model.CarItem;
@@ -132,7 +134,38 @@ public class HomeFragment extends Fragment {
 
         mSearchView.setEnabled(mAlph >= 0.3);
 
+
+        view.findViewById(R.id.btn_saoyisao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), CaptureActivity.class));
+            }
+        });
+
         return view;
+    }
+
+    private final static int REQ_CODE = 1028;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE) {
+//            mImage.setVisibility(View.GONE);
+//            mTvResult.setVisibility(View.VISIBLE);
+//            mImageCallback.setVisibility(View.VISIBLE);
+
+            String result = data.getStringExtra(CaptureActivity.SCAN_QRCODE_RESULT);
+            Bitmap bitmap = data.getParcelableExtra(CaptureActivity.SCAN_QRCODE_BITMAP);
+
+//            mTvResult.setText("扫码结果："+result);
+//            showToast("扫码结果：" + result);
+//            if(bitmap != null){
+//                mImageCallback.setImageBitmap(bitmap);//现实扫码图片
+//            }
+        }
+
+
     }
 
     /**
@@ -188,7 +221,7 @@ public class HomeFragment extends Fragment {
     private void initRecyclerView(View view) {
         mAdapter = new HomeAdapter(items, getActivity());
         mRecyclerView = view.findViewById(R.id.home_recyclerView);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setAdapter(mAdapter);
     }

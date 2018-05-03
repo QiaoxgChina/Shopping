@@ -64,6 +64,9 @@
         <activity
             android:name=".view.activity.SearchActivity"
             android:theme="@style/SearchActivityTheme" />
+        <activity
+            android:name=".view.activity.ProductInfoActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -21,7 +21,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/shape_round_bg"
+        android:background="@drawable/shape_round_corner_bg"
         android:text="5s跳过"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"

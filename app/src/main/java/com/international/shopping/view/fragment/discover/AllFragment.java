@@ -8,12 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.international.baselib.base.BaseFragment;
 import com.international.shopping.R;
 
 /**
  * A fragment with a Google +1 button.
  */
-public class AllFragment extends Fragment {
+public class AllFragment extends BaseFragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -34,18 +35,17 @@ public class AllFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void loadData() {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_all, container, false);
+    protected View initView() {
+        View view = LayoutInflater.from(mContent).inflate(R.layout.fragment_all, null, false);
 
         TextView tv = view.findViewById(R.id.fragment_title);
         tv.setText(mParam1);

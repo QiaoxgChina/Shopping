@@ -60,7 +60,10 @@ dependencies {
     api 'com.netease.nimlib:nrtc:5.0.0'
     api 'com.netease.nimlib:avchat:5.0.0'
     api 'com.netease.nimlib:chatroom:5.0.0'
-    api 'com.github.bumptech.glide:glide:4.2.0'
+    api 'com.github.bumptech.glide:glide:3.7.0'
+    api 'jp.wasabeef:glide-transformations:3.0.1'
     testImplementation 'junit:junit:4.12'
+
+    api 'com.github.open-android:Zxing:v1.0.3'
 
 }

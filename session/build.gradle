@@ -4,17 +4,6 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
 
-
-//    defaultConfig {
-//        minSdkVersion 19
-//        targetSdkVersion 27
-//        versionCode 1
-//        versionName "1.0"
-//        renderscriptSupportModeEnabled true
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//
-//    }
-
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -37,18 +26,13 @@ android {
         // dex突破65535的限制
         multiDexEnabled true
     }
-//
-//    compileOptions {
-//        sourceCompatibility rootProject.ext.appSourceCompatibility
-//        targetCompatibility rootProject.ext.appTargetCompatibility
-//    }
 }
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api 'me.everything:overscroll-decor-android:1.0.4'
     api 'me.leolin:ShortcutBadger:1.1.17@aar'
-    api 'jp.wasabeef:glide-transformations:3.0.1'
+//    api 'jp.wasabeef:glide-transformations:3.0.1'
     api 'com.android.support:support-annotations:26.0.2'
     api project(':base')
 

@@ -77,4 +77,5 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     implementation project(':session')
     implementation project(':third')
+    implementation 'com.android.support:support-v4:27.1.1'
 }

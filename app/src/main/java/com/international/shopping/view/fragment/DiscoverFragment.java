@@ -64,7 +64,7 @@ public class DiscoverFragment extends Fragment {
     }
 
     private void initData() {
-        TAB_TITLES = new String[]{"全部", "类别1", "类别2", "类别3","类别4", "类别5", "类别6", "类别7"};
+        TAB_TITLES = new String[]{"全部", "类别1", "类别2", "类别3", "类别4", "类别5", "类别6", "类别7"};
 
         mFragmentList.add(AllFragment.newInstance(TAB_TITLES[0], ""));
         mFragmentList.add(AllFragment.newInstance(TAB_TITLES[1], ""));
@@ -109,7 +109,7 @@ public class DiscoverFragment extends Fragment {
     private void setTab() {
         for (int i = 0; i < TAB_TITLES.length; i++) {
             TabLayout.Tab tab = mTableLayout.newTab();
-            View view = this.getLayoutInflater().inflate(R.layout.view_discover_tab, null);
+            View view = this.getLayoutInflater().inflate(R.layout.view_discover_tab, null, false);
             tab.setCustomView(view);
 
             TextView tabTitle = view.findViewById(R.id.tab_title);

@@ -230,7 +230,7 @@
             android:layout_height="45dp">
 
             <ImageView
-                android:id="@+id/label_1"
+                android:id="@+id/btn_saoyisao"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerVertical="true"
@@ -246,7 +246,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_toLeftOf="@+id/btn_search"
-                android:layout_toRightOf="@+id/label_1"
+                android:layout_toRightOf="@+id/btn_saoyisao"
                 android:background="@drawable/shape_white_line_bg" />
 
             <ImageView
