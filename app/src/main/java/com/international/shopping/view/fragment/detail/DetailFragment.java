@@ -1,13 +1,21 @@
 package com.international.shopping.view.fragment.detail;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.international.baselib.AppConfig;
+import com.international.baselib.util.ToastUtil;
 import com.international.shopping.R;
+import com.international.shopping.view.adapter.DetailAdapter;
+
+import java.util.List;
 
 public class DetailFragment extends Fragment {
 
@@ -34,7 +42,13 @@ public class DetailFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
         }
+
+        initItemData();
     }
+
+    private RecyclerView mRecyclerView;
+    private DetailAdapter mDetailAdapter;
+    private List<String> imageList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,13 +59,32 @@ public class DetailFragment extends Fragment {
         TextView tv = view.findViewById(R.id.detailInfo_tv);
         tv.setText(mParam1);
 
+        initRecyclerView(view);
+
         return view;
     }
 
-    public int getFragmentViewHeight(){
-        if(mParam1.endsWith("评价")){
+    private void initItemData() {
+        imageList = AppConfig.getRandomImageUrl(15);
+
+        ToastUtil.showTip(imageList.size() + "", getActivity());
+    }
+
+    private void initRecyclerView(View view) {
+        mRecyclerView = view.findViewById(R.id.detailInfo_rv);
+        mDetailAdapter = new DetailAdapter(imageList, getActivity());
+
+        mRecyclerView.setAdapter(mDetailAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        mRecyclerView.setNestedScrollingEnabled(false);
+
+//        mRecyclerView.setMinimumHeight(imageList.size()*500);
+    }
+
+    public int getFragmentViewHeight() {
+        if (mParam1.endsWith("评价")) {
             return 200;
-        }else{
+        } else {
             return 800;
         }
     }

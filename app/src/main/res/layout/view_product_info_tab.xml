@@ -4,16 +4,19 @@
     android:id="@+id/ll_tab"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:background="@color/white"
     android:orientation="vertical">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/detailInfo_tabLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:background="#fff"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
         app:tabIndicatorHeight="1dp" />
 
     <View

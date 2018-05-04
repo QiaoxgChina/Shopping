@@ -9,12 +9,14 @@
         android:id="@+id/mScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_ll"
         android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_F1F1F1"
+            android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
 
             <com.youth.banner.Banner
@@ -34,21 +36,22 @@
                     android:layout_height="40dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="10dp"
                         android:text="￥1256.00"
                         android:textColor="@color/color_red_f04c62"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="15dp"
+                        android:visibility="gone"
                         android:src="@drawable/label_collection" />
                 </RelativeLayout>
 
@@ -61,7 +64,7 @@
                     android:maxLines="3"
                     android:padding="10dp"
                     android:text="康佳（KONKA）A49U 49英寸64位10核4KHDR超高清安卓智能平板液晶电视"
-                    android:textSize="16dp" />
+                    android:textSize="14dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -84,9 +87,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="60dp"
+                        android:layout_toLeftOf="@+id/selectType_btn"
                         android:maxLines="2"
                         android:text="一件   39  褐色"
                         android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/selectType_btn"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/label_right" />
 
                 </RelativeLayout>
 
@@ -111,9 +123,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="60dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/selectAddress_btn"
+                        android:lineSpacingExtra="5dp"
                         android:maxLines="2"
                         android:text="中国北京市朝阳区建国路89号华贸商务楼15号楼601"
                         android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/selectAddress_btn"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/label_right" />
 
                 </RelativeLayout>
 
@@ -144,7 +167,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/shape_round_bg"
+            android:background="@drawable/shape_round_gray_bg"
             android:gravity="center">
 
             <ImageView
@@ -171,7 +194,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:background="@drawable/shape_round_bg"
+            android:background="@drawable/shape_round_gray_bg"
             android:gravity="center">
 
             <ImageView
@@ -180,6 +203,77 @@
                 android:layout_centerInParent="true"
                 android:src="@drawable/btn_more" />
         </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/car_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/main_car" />
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/car_iv"
+            android:background="@color/color_F1F1F1" />
+
+        <ImageView
+            android:id="@+id/collection_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@+id/line4"
+            android:src="@drawable/label_collection" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/collection_iv">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="加入购物车"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="立即购买"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_80BFBFBF" />
 
     </RelativeLayout>
 </RelativeLayout>

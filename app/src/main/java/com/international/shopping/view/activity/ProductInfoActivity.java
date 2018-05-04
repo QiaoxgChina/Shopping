@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -16,11 +18,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.third.bean.ShareBean;
+import com.international.baselib.AppConfig;
 import com.international.baselib.base.BaseViewPager;
+import com.international.baselib.util.ToastUtil;
 import com.international.baselib.view.BaseViewPagerAdapter;
 import com.international.baselib.view.MyScrollView;
 import com.international.shopping.R;
 import com.international.shopping.view.fragment.detail.DetailFragment;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -84,6 +90,25 @@ public class ProductInfoActivity extends AppCompatActivity implements MyScrollVi
 
         initTabData();
         initTabLayout();
+
+        findViewById(R.id.selectType_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.showTip("选择商品类型", ProductInfoActivity.this);
+                showShareView(ProductInfoActivity.this);
+            }
+        });
+    }
+
+    public void showShareView(final Activity context) {
+
+        View rootView = LayoutInflater.from(context).inflate(com.example.third.R.layout.layout_share_view, null);
+
+        final BottomSheetDialog bsd = new BottomSheetDialog(context);
+        bsd.setCancelable(true);//设置点击外部是否可以取消
+        bsd.setContentView(rootView);//设置对框框中的布局
+
+        bsd.show();
     }
 
     private void initTabData() {
@@ -158,9 +183,7 @@ public class ProductInfoActivity extends AppCompatActivity implements MyScrollVi
     private List<String> mBannerImages = new ArrayList<>();
 
     private void initBannerData() {
-        mBannerImages.add("http://image1.92bizhi.com/art_green-widescreen_01-2560x1600.jpg");
-        mBannerImages.add("http://imgstore.cdn.sogou.com/app/a/100540002/782261.jpg");
-        mBannerImages.add("http://pic1.win4000.com/wallpaper/0/51832372d67d8.jpg");
+        mBannerImages = AppConfig.getRandomImageUrl(7);
     }
 
     @Override

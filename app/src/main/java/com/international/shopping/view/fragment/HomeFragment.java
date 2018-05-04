@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.zxing.activity.CaptureActivity;
+import com.international.baselib.AppConfig;
 import com.international.baselib.util.ToastUtil;
 import com.international.shopping.R;
 import com.international.shopping.model.CarItem;
@@ -46,6 +47,8 @@ public class HomeFragment extends Fragment {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_GET_DATA_RESULT:
+                    mAdapter.notifyDataSetChanged();
+                    mBanner.update(mBannerImages);
                     mSwipeView.setRefreshing(false);
                     break;
             }
@@ -184,6 +187,7 @@ public class HomeFragment extends Fragment {
         mSwipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                refreshData();
                 mHandler.sendEmptyMessageDelayed(MSG_GET_DATA_RESULT, 1000);
             }
         });
@@ -197,20 +201,18 @@ public class HomeFragment extends Fragment {
         mBanner.start();
     }
 
-    private void initItemData(){
-        for (int i = 0; i < 15; i++) {
+    private void initItemData() {
+        List<String> imageUrls = AppConfig.getRandomImageUrl(20);
+        for (int i = 0; i < imageUrls.size(); i++) {
             HomeItem item = new HomeItem();
             item.setMoney(125 + 125 * i);
+            item.setImgUrl(imageUrls.get(i));
             if (i % 3 == 0) {
-                item.setImgUrl("http://img5.imgtn.bdimg.com/it/u=3422429041,2382682538&fm=27&gp=0.jpg");
                 item.setTitle("联想电脑Y5300");
-
             } else if (i % 3 == 1) {
-                item.setImgUrl("http://img2.imgtn.bdimg.com/it/u=2152652095,3426448541&fm=27&gp=0.jpg");
                 item.setTitle("康佳（KONKA）A49U 49英寸64位10核4KHDR超高清安卓智能平板液晶电视");
 
             } else {
-                item.setImgUrl("http://img5.imgtn.bdimg.com/it/u=2912000328,3978772011&fm=27&gp=0.jpg");
                 item.setTitle("雷士（NVC）插电五孔插座光控夜灯 浪漫温馨家居卧室过道走廊LED节能小夜灯 EJBX9001");
             }
 
@@ -221,7 +223,7 @@ public class HomeFragment extends Fragment {
     private void initRecyclerView(View view) {
         mAdapter = new HomeAdapter(items, getActivity());
         mRecyclerView = view.findViewById(R.id.home_recyclerView);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -234,12 +236,12 @@ public class HomeFragment extends Fragment {
         //设置图片集合
         mBanner.setImages(mBannerImages);
 
-        mBanner.setBannerTitles(mBannerTitles);
+//        mBanner.setBannerTitles(mBannerTitles);
 
         mBanner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                ToastUtil.showTip(mBannerTitles.get(position), getActivity());
+//                ToastUtil.showTip(mBannerTitles.get(position), getActivity());
             }
         });
     }
@@ -268,21 +270,26 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private List<String> mBannerTitles;
+//    private List<String> mBannerTitles;
     private List<String> mBannerImages;
 
     private void initBannerData() {
-        mBannerTitles = new ArrayList<>();
-        mBannerTitles.add("Banner_1");
-        mBannerTitles.add("Banner_2");
-        mBannerTitles.add("Banner_3");
-        mBannerTitles.add("Banner_4");
+//        mBannerTitles = new ArrayList<>();
+//        mBannerTitles.add("Banner_1");
+//        mBannerTitles.add("Banner_2");
+//        mBannerTitles.add("Banner_3");
+//        mBannerTitles.add("Banner_4");
 
-        mBannerImages = new ArrayList<>();
-        mBannerImages.add("http://image1.92bizhi.com/art_green-widescreen_01-2560x1600.jpg");
-        mBannerImages.add("http://www.wallcoo.com/1920x1200/1920x1200_Widescreen_Wallpaper_design_kol_01/wallpapers/1920x1200/wallcoo.com_1920x1200_Widescreen_Wallpaper_CG_Design_2449.jpg");
-        mBannerImages.add("http://imgstore.cdn.sogou.com/app/a/100540002/782261.jpg");
-        mBannerImages.add("http://pic1.win4000.com/wallpaper/0/51832372d67d8.jpg");
+        mBannerImages = AppConfig.getRandomImageUrl(5);
+    }
+
+    private void refreshData() {
+//        mBannerTitles.clear();
+        mBannerImages.clear();
+        items.clear();
+
+        initBannerData();
+        initItemData();
     }
 
     @Override
