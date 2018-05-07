@@ -5,8 +5,7 @@ import android.support.multidex.MultiDexApplication;
 
 import com.example.third.UMengHelper;
 import com.netease.nim.uikit.NimHelper;
-
-//import com.netease.nimlib.sdk.NIMClient;
+import com.squareup.leakcanary.LeakCanary;
 
 public class BaseApplication extends MultiDexApplication {
 
@@ -23,6 +22,8 @@ public class BaseApplication extends MultiDexApplication {
 
         //网易云信
         NimHelper.getInstance().initNim(mContext);
+
+        LeakCanary.install(this);
     }
 
 

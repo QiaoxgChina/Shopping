@@ -25,6 +25,7 @@ import com.international.baselib.util.ToastUtil;
 import com.international.baselib.view.BaseViewPagerAdapter;
 import com.international.baselib.view.MyScrollView;
 import com.international.shopping.R;
+import com.international.shopping.view.fragment.detail.CommentFragment;
 import com.international.shopping.view.fragment.detail.DetailFragment;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.youth.banner.Banner;
@@ -115,7 +116,7 @@ public class ProductInfoActivity extends AppCompatActivity implements MyScrollVi
         TAB_TITLES = new String[]{"详情", "评价", "推荐"};
 
         mFragmentList.add(DetailFragment.newInstance(TAB_TITLES[0]));
-        mFragmentList.add(DetailFragment.newInstance(TAB_TITLES[1]));
+        mFragmentList.add(CommentFragment.newInstance("http://www.baidu.com"));
         mFragmentList.add(DetailFragment.newInstance(TAB_TITLES[2]));
     }
 
@@ -137,8 +138,7 @@ public class ProductInfoActivity extends AppCompatActivity implements MyScrollVi
 
             @Override
             public void onPageSelected(int position) {
-                DetailFragment ft = (DetailFragment) mFragmentList.get(position);
-                mViewPager.setMinimumHeight(ft.getFragmentViewHeight());
+
             }
 
             @Override

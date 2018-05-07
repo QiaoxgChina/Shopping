@@ -7,12 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.international.baselib.util.ToastUtil;
 import com.international.baselib.view.SwipeRefreshView;
 import com.international.shopping.R;
 import com.international.shopping.event.SwitchMainTabEvent;
@@ -24,11 +27,18 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.login.LoginException;
+
 public class CarFragment extends Fragment {
+
+    private static final String TAG = "CarFragment";
 
     private static final int MSG_REFRESH_RECYCLE = 1;
     private static final int MSG_LOAD_RECYCLE = 2;
 
+    private final int PAGE_SIZE = 12;
+    private int PAGE_INDEX = 0;
+    private int lastPosition = PAGE_SIZE - 1;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -39,8 +49,9 @@ public class CarFragment extends Fragment {
                     mSwipeView.setRefreshing(false);
                     break;
                 case MSG_LOAD_RECYCLE:
+                    initData();
+                    mAdapter.notifyDataSetChanged();
                     Toast.makeText(getActivity(), "加载成功", Toast.LENGTH_SHORT).show();
-                    mSwipeView.setLoading(false);
                     break;
             }
         }
@@ -78,7 +89,7 @@ public class CarFragment extends Fragment {
     }
 
     private View mNoDataView;
-    private SwipeRefreshView mSwipeView;
+    private SwipeRefreshLayout mSwipeView;
     private RecyclerView mRecycleView;
     private CarAdapter mAdapter;
     private List<CarItem> carItemList = new ArrayList<>();
@@ -114,21 +125,13 @@ public class CarFragment extends Fragment {
         mNoDataView.setVisibility(View.GONE);
 
         mSwipeView = view.findViewById(R.id.swipe_refresh);
+//        mSwipeView.setItemCount(12);
         mSwipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mHandler.sendEmptyMessageDelayed(MSG_REFRESH_RECYCLE, 1000);
             }
         });
-
-        mSwipeView.setOnLoadMoreListener(new SwipeRefreshView.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                mHandler.sendEmptyMessageDelayed(MSG_LOAD_RECYCLE, 1000);
-            }
-        });
-
-
 
         mAdapter = new CarAdapter(carItemList, getActivity(), new CarAdapter.OnUpdateTotalMoneyListener() {
             @Override
@@ -140,6 +143,49 @@ public class CarFragment extends Fragment {
         mRecycleView = view.findViewById(R.id.recycler_view);
         mRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecycleView.setAdapter(mAdapter);
+        mRecycleView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                LinearLayoutManager llm = (LinearLayoutManager) mRecycleView.getLayoutManager();
+                Log.e(TAG, "onScrollChange: last position is " + llm.findLastVisibleItemPosition());
+                int curLastPosition = llm.findLastVisibleItemPosition();
+                if (curLastPosition < 20 && curLastPosition == lastPosition) {
+                    PAGE_INDEX++;
+                    lastPosition = PAGE_SIZE * (PAGE_INDEX + 1) - 1;
+                    mHandler.sendEmptyMessageDelayed(MSG_LOAD_RECYCLE, 1000);
+                } else {
+                    ToastUtil.showTip("到底了", getActivity());
+                }
+            }
+        });
+
+
+        mRecycleView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mOldYPosition = v.getY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        float mCurrYPosition = v.getY();
+                        Log.e(TAG, "onTouch: mOldYPosition is " + mOldYPosition + "  and mCurrYPosition is " + mCurrYPosition + " and  = ======  is " + (mCurrYPosition - mOldYPosition));
+                        if (mCurrYPosition > mOldYPosition) {
+                            if (mCurrYPosition - mOldYPosition > 100) {
+
+                            } else {
+                                ToastUtil.showTip("上拉距离不够", getActivity());
+                            }
+                        } else {
+                            ToastUtil.showTip("下拉动作", getActivity());
+                        }
+
+                        break;
+                }
+                return false;
+            }
+        });
+
         mTotalMoneyTv.setText(String.format(getString(R.string.car_total_money), mAdapter.getTotalMoney(carItemList)));
 
         mCheckBox = view.findViewById(R.id.selectedAll_check);
@@ -153,9 +199,9 @@ public class CarFragment extends Fragment {
         return view;
     }
 
-    private void initData(){
-        carItemList = new ArrayList<>();
+    float mOldYPosition;
 
+    private void initData() {
         CarItem item = new CarItem();
         item.setCount(2);
         item.setImgUrl("https://img10.360buyimg.com/n1/s180x180_jfs/t15082/163/1102057221/274351/c3fbc184/5a449dd7Ne415a02c.jpg");
@@ -171,6 +217,10 @@ public class CarFragment extends Fragment {
         item2.setTitle("MacBook Pro");
         item2.setSelected(false);
         carItemList.add(item2);
+
+        for (int i = 0; i < 10; i++) {
+            carItemList.add(item2);
+        }
     }
 
 

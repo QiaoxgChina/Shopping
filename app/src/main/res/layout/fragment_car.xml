@@ -9,82 +9,77 @@
     <View
         android:id="@+id/titleBar_view"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:layout_height="20dp"/>
+        android:layout_height="20dp"
+        android:background="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titleBar_height"
+        android:layout_below="@+id/titleBar_view"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="购物车"
-        android:layout_below="@+id/titleBar_view"
         android:textColor="#fff"
         android:textSize="18dp" />
 
 
-    <com.international.baselib.view.SwipeRefreshView
+    <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/car_bottom"
         android:layout_below="@+id/title_tv">
 
-        <RelativeLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/car_bottom" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-            <RelativeLayout
-                android:id="@+id/car_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/white">
+    <RelativeLayout
+        android:id="@+id/car_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
 
-                <CheckBox
-                    android:id="@+id/selectedAll_check"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="全选"/>
+        <CheckBox
+            android:id="@+id/selectedAll_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="全选" />
 
-                <TextView
-                    android:id="@+id/totalMoney_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_toLeftOf="@+id/goPay_tv"
-                    android:layout_marginRight="30dp"
-                    android:text="合计：321" />
+        <TextView
+            android:id="@+id/totalMoney_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/goPay_tv"
+            android:gravity="center"
+            android:text="合计：321" />
 
-                <TextView
-                    android:id="@+id/goPay_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:background="@color/main_color"
-                    android:gravity="center"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:text="去结算"
-                    android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/goPay_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="去结算"
+            android:textColor="@color/white" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/color_BFBFBF" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_BFBFBF" />
 
-            </RelativeLayout>
+    </RelativeLayout>
 
-        </RelativeLayout>
-
-    </com.international.baselib.view.SwipeRefreshView>
 
     <LinearLayout
         android:id="@+id/noData_view"

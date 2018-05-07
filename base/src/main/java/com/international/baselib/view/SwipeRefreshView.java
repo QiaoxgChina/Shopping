@@ -1,7 +1,10 @@
 package com.international.baselib.view;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -23,7 +26,7 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
     private static final String TAG = SwipeRefreshView.class.getSimpleName();
     private final int mScaledTouchSlop;
     private final View mFooterView;
-    private ListView mListView;
+    //    private ListView mListView;
     private OnLoadMoreListener mListener;
 
     /**
@@ -33,6 +36,7 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
     private RecyclerView mRecyclerView;
     private int mItemCount;
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     public SwipeRefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
         // 填充底部加载布局
@@ -46,17 +50,11 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         // 获取ListView,设置ListView的布局位置
-        if (mListView == null || mRecyclerView == null) {
+        if (mRecyclerView == null) {
             // 判断容器有多少个孩子
             if (getChildCount() > 0) {
                 // 判断第一个孩子是不是ListView
-                if (getChildAt(0) instanceof ListView) {
-                    // 创建ListView对象
-                    mListView = (ListView) getChildAt(0);
-
-                    // 设置ListView的滑动监听
-                    setListViewOnScroll();
-                } else if (getChildAt(0) instanceof RecyclerView) {
+                if (getChildAt(0) instanceof RecyclerView) {
                     // 创建ListView对象
                     mRecyclerView = (RecyclerView) getChildAt(0);
 
@@ -73,6 +71,7 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
      */
     private float mDownY, mUpY;
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
 
@@ -109,18 +108,19 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
 
         // 2. 当前页面可见的item是最后一个条目,一般最后一个条目位置需要大于第一页的数据长度
         boolean condition2 = false;
-        if (mListView != null && mListView.getAdapter() != null) {
-
+        if (mRecyclerView != null && mRecyclerView.getAdapter() != null && mRecyclerView.getLayoutManager() instanceof LinearLayoutManager) {
+            LinearLayoutManager llm = (LinearLayoutManager) mRecyclerView.getLayoutManager();
             if (mItemCount > 0) {
-                if (mListView.getAdapter().getCount() < mItemCount) {
+                if (mRecyclerView.getAdapter().getItemCount() < mItemCount) {
                     // 第一页未满，禁止下拉
                     condition2 = false;
-                }else {
-                    condition2 = mListView.getLastVisiblePosition() == (mListView.getAdapter().getCount() - 1);
+                } else {
+
+                    condition2 = llm.findLastVisibleItemPosition() == (mRecyclerView.getAdapter().getItemCount() - 1);
                 }
             } else {
                 // 未设置数据长度，则默认第一页数据不满时也可以上拉
-                condition2 = mListView.getLastVisiblePosition() == (mListView.getAdapter().getCount() - 1);
+                condition2 = llm.findLastVisibleItemPosition() == (mRecyclerView.getAdapter().getItemCount() - 1);
             }
 
         }
@@ -163,38 +163,15 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
         isLoading = loading;
         if (isLoading) {
             // 显示布局
-            mListView.addFooterView(mFooterView);
+            mRecyclerView.addView(mFooterView);
         } else {
             // 隐藏布局
-            mListView.removeFooterView(mFooterView);
+            mRecyclerView.removeView(mFooterView);
 
             // 重置滑动的坐标
             mDownY = 0;
             mUpY = 0;
         }
-    }
-
-
-    /**
-     * 设置ListView的滑动监听
-     */
-    private void setListViewOnScroll() {
-
-        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                // 移动过程中判断时候能下拉加载更多
-                if (canLoadMore()) {
-                    // 加载数据
-                    loadData();
-                }
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-            }
-        });
     }
 
 
