@@ -3,9 +3,12 @@ package com.international.shopping.base;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import com.example.qiaoxg.jgpush.JPushHelper;
 import com.example.third.UMengHelper;
 import com.netease.nim.uikit.NimHelper;
 import com.squareup.leakcanary.LeakCanary;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class BaseApplication extends MultiDexApplication {
 
@@ -24,6 +27,11 @@ public class BaseApplication extends MultiDexApplication {
         NimHelper.getInstance().initNim(mContext);
 
         LeakCanary.install(this);
+
+        //初始化极光推送
+//        JPushInterface.setDebugMode(true);
+//        JPushInterface.init(this);
+        JPushHelper.getInstance().init(this);
     }
 
 
