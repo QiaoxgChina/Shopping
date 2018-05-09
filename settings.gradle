@@ -1,1 +1,1 @@
-include ':app', ':base', ':session', ':third'
+include ':app', ':base', ':session', ':third', ':jgpush'

@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/jgpush" />
             <option value="$PROJECT_DIR$/session" />
             <option value="$PROJECT_DIR$/third" />
           </set>

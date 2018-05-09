@@ -81,12 +81,4 @@ public class DetailFragment extends Fragment {
 //        mRecyclerView.setMinimumHeight(imageList.size()*500);
     }
 
-    public int getFragmentViewHeight() {
-        if (mParam1.endsWith("评价")) {
-            return 200;
-        } else {
-            return 800;
-        }
-    }
-
 }

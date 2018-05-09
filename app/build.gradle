@@ -14,6 +14,11 @@ android {
         versionCode 2
         versionName "1.1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
     }
 
     buildTypes {
@@ -68,12 +73,20 @@ android {
         multiDexEnabled true
     }
 
-//    defaultConfig {
-//        ndk {
-//            //设置支持的SO库架构
-//            abiFilters "arm64-v8a", "armeabi-v7a", "x86", "x86_64"
-//        }
-//    }
+    defaultConfig {
+        ndk {
+            //设置支持的SO库架构
+            abiFilters "arm64-v8a", "armeabi-v7a", "x86", "x86_64"
+        }
+    }
+
+    defaultConfig{
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "ce309fbb93dbaebb13f11fcf", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+    }
 
     lintOptions {
         abortOnError false
@@ -85,6 +98,7 @@ android {
     }
 
     lintOptions {
+//        checkReleaseBuilds false
         abortOnError false
     }
 
@@ -98,4 +112,10 @@ dependencies {
     implementation project(':session')
     implementation project(':third')
     implementation 'com.android.support:support-v4:27.1.1'
+
+    debugApi 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+
+    compile project(path: ':jgpush')
 }
