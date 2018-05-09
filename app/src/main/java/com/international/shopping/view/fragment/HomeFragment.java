@@ -246,7 +246,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public class GlideImageLoader extends ImageLoader {
+    public static class GlideImageLoader extends ImageLoader {
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
             /**

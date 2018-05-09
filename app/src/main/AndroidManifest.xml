@@ -67,6 +67,7 @@
         <activity
             android:name=".view.activity.ProductInfoActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.CustomRefreshActivity"></activity>
     </application>
 
 </manifest>

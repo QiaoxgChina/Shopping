@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.international.shopping.view.activity.CustomRefreshActivity">
+
+    <com.international.baselib.view.CustomRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
+
+            <View
+                android:id="@+id/div_1"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/banner"
+                android:background="@color/color_F1F1F1" />
+
+            <LinearLayout
+                android:id="@+id/category_1"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/div_1"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_jiadian" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="家电" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_F1F1F1" />
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_xiebao" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="鞋包" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_F1F1F1" />
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_tushu" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="图书音响" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_F1F1F1" />
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_jiajv" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="家具" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/div_2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/category_1"
+                android:background="@color/color_F1F1F1" />
+
+            <LinearLayout
+                android:id="@+id/category_2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/div_2"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_huazhuangpin" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="化妆品" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_F1F1F1" />
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_qiche" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="汽配" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_F1F1F1" />
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_zhubao" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="珠宝" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_F1F1F1" />
+
+                <LinearLayout style="@style/HomeCategoryItem">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/label_fenlei" />
+
+                    <TextView
+                        style="@style/HomeCategoryItem_Text"
+                        android:text="分类" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/div_3"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/category_2"
+                android:background="@color/color_F1F1F1" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/home_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_F1F1F1"
+                android:paddingRight="5dp"
+                android:layout_below="@+id/div_3" />
+
+        </RelativeLayout>
+    </com.international.baselib.view.CustomRefreshLayout>
+
+</LinearLayout>

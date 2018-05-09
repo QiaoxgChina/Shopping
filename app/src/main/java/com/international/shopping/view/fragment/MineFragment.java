@@ -21,6 +21,7 @@ import com.international.shopping.R;
 import com.international.shopping.model.User;
 import com.international.shopping.util.SharedPreferencesUtil;
 import com.international.shopping.view.activity.AboutUsActivity;
+import com.international.shopping.view.activity.CustomRefreshActivity;
 import com.international.shopping.view.activity.SettingActivity;
 import com.netease.nim.uikit.NimHelper;
 import com.netease.nim.uikit.net.DemoCache;
@@ -171,6 +172,13 @@ public class MineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().startActivity(new Intent(getActivity(), SettingActivity.class));
+            }
+        });
+
+        view.findViewById(R.id.collection_rl).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().startActivity(new Intent(getActivity(), CustomRefreshActivity.class));
             }
         });
     }
